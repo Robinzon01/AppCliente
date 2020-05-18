@@ -17,8 +17,8 @@ public class Role implements Serializable{
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Long id;
 	
-	@Column(unique=true, length=20)
-	private String nombre;
+	@Column(name="authority")
+	private String authority;
 	
 	public Long getId() {
 		return id;
@@ -28,13 +28,15 @@ public class Role implements Serializable{
 		this.id = id;
 	}
 
-	public String getNombre() {
-		return nombre;
+	public String getAuthority() {
+		return authority;
 	}
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setAuthority(String authority) {
+		this.authority = authority;
 	}
+
+
 
 	/**
 	 * 

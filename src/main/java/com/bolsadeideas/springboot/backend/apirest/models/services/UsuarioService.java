@@ -6,12 +6,16 @@ import java.util.stream.Collectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,7 +29,10 @@ public class UsuarioService implements IUsuarioService, UserDetailsService{
 
 	@Autowired
 	private IUsuarioDao usuarioDao;
-	
+	/*
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+	*/
 	@Override
 	@Transactional(readOnly=true)
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -39,7 +46,7 @@ public class UsuarioService implements IUsuarioService, UserDetailsService{
 		
 		List<GrantedAuthority> authorities = usuario.getRoles()
 				.stream()
-				.map(role -> new SimpleGrantedAuthority(role.getNombre()))
+				.map(role -> new SimpleGrantedAuthority(role.getAuthority()))
 				.peek(authority -> logger.info("Role: " + authority.getAuthority()))
 				.collect(Collectors.toList());
 		
@@ -50,6 +57,31 @@ public class UsuarioService implements IUsuarioService, UserDetailsService{
 	@Transactional(readOnly=true)
 	public Usuario findByUsername(String username) {
 		return usuarioDao.findByUsername(username);
+	}
+
+	@Override
+	@Transactional(readOnly=true)
+	public Usuario createUsusario(Usuario usuario) {
+		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(); 
+		Usuario objU = new Usuario();
+		objU.setEnabled(usuario.getEnabled());
+		objU.setPassword(passwordEncoder.encode(usuario.getPassword()));
+		objU.setRoles(usuario.getRoles());
+		objU.setUsername(usuario.getUsername());
+		
+		return usuarioDao.save(objU);
+	}
+
+	@Override
+	public void deleteUsusario(Long codigo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public Page<Usuario> findAllPage(Pageable pageable) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

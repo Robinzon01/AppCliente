@@ -37,16 +37,16 @@ public class Usuario implements Serializable {
 	
 	@Column(unique = true)
 	private String email;
-	/* 
+	
 	@Column(length = 3)
 	private String cia;
-    */
+    
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name="usuarios_roles", joinColumns= @JoinColumn(name="usuario_id"),
 	inverseJoinColumns=@JoinColumn(name="role_id"),
 	uniqueConstraints= {@UniqueConstraint(columnNames= {"usuario_id", "role_id"})})
 	private List<Role> roles;
-    /*
+    
 	public String getCia() {
 		return cia;
 	}
@@ -54,7 +54,7 @@ public class Usuario implements Serializable {
 	public void setCia(String cia) {
 		this.cia = cia;
 	}
-	*/
+	
 	public Long getId() {
 		return id;
 	}

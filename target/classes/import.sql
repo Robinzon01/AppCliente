@@ -23,11 +23,11 @@ INSERT INTO clientes (id, region_id, nombre, apellido, email, create_at) VALUES(
 INSERT INTO clientes (id, region_id, nombre, apellido, email, create_at) VALUES(20, 7, 'Jade', 'Doe', 'jane.doe@gmail.com', SYSDATE);
 
 /* Creamos algunos usuarios con sus roles */
-INSERT INTO usuarios (id, username, password, enabled, nombre, apellido, email) VALUES (21, 'andres','$2a$10$C3Uln5uqnzx/GswADURJGOIdBqYrly9731fnwKDaUdBkt/M3qvtLq',1, 'Andres', 'Guzman','profesor@bolsadeideas.com');
-INSERT INTO usuarios (id, username, password, enabled, nombre, apellido, email) VALUES (22, 'admin','$2a$10$RmdEsvEfhI7Rcm9f/uZXPebZVCcPC7ZXZwV51efAvMAp1rIaRAfPK',1, 'John', 'Doe','jhon.doe@bolsadeideas.com');
+INSERT INTO usuarios (id, username, password, enabled, nombre, apellido, email, cia) VALUES (21, 'andres','$2a$10$C3Uln5uqnzx/GswADURJGOIdBqYrly9731fnwKDaUdBkt/M3qvtLq',1, 'Andres', 'Guzman','profesor@bolsadeideas.com', '01');
+INSERT INTO usuarios (id, username, password, enabled, nombre, apellido, email, cia) VALUES (22, 'admin','$2a$10$RmdEsvEfhI7Rcm9f/uZXPebZVCcPC7ZXZwV51efAvMAp1rIaRAfPK',1, 'John', 'Doe','jhon.doe@bolsadeideas.com', '01');
 
-INSERT INTO roles (id, nombre) VALUES (23, 'ROLE_USER');
-INSERT INTO roles (id, nombre) VALUES (24, 'ROLE_ADMIN');
+INSERT INTO roles (id, authority) VALUES (23, 'ROLE_USER');
+INSERT INTO roles (id, authority) VALUES (24, 'ROLE_ADMIN');
 
 INSERT INTO usuarios_roles (usuario_id, role_id) VALUES (21, 23);
 INSERT INTO usuarios_roles (usuario_id, role_id) VALUES (22, 24);
