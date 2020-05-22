@@ -8,10 +8,9 @@ import org.springframework.stereotype.Repository;
 
 import com.bolsadeideas.springboot.backend.apirest.models.entity.Role;
 
-
 @Repository
 public interface IRoleDao extends CrudRepository<Role, Long>{
 
-	@Query("SELECT r.authority FROM Role r GROUP BY r.authority")
-	List<String> findRolesUnicos();
+	@Query("SELECT r FROM Role r")
+	List<Role> findRolesUnicos();
 }

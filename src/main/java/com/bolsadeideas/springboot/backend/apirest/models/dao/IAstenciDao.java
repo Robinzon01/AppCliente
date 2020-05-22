@@ -23,7 +23,7 @@ public interface IAstenciDao extends PagingAndSortingRepository<Astenci, Long> {
 	
 	Astenci findByCiaAndId(String cia,Long id);
 	
-	@Query(nativeQuery = true , value = "SELECT * FROM GESTION.ASTENCI WHERE NO_CIA = :cia AND ESTADO = :estado AND COD_AS NOT IN(SELECT COD_AS FROM GESTION.RGTACDE WHERE NO_CIA = :cia AND USUARIO = :user AND FECHA BETWEEN TO_DATE(:f1, 'DD/MM/YYYY HH24:MI:SS') AND TO_DATE(:f2, 'DD/MM/YYYY HH24:MI:SS'))")
+	@Query(nativeQuery = true , value = "SELECT * FROM ASTENCI WHERE NO_CIA = :cia AND ESTADO = :estado AND COD_AS NOT IN(SELECT COD_AS FROM RGTACDE WHERE NO_CIA = :cia AND USUARIO = :user AND FECHA BETWEEN TO_DATE(:f1, 'DD/MM/YYYY HH24:MI:SS') AND TO_DATE(:f2, 'DD/MM/YYYY HH24:MI:SS'))")
 	List<Astenci> finByHoyFromAstenci(@Param("cia") String cia, @Param("estado") String estado, @Param("user") String user,@Param("f1") String f1,@Param("f2") String f2);
 
 }

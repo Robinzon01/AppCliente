@@ -7,15 +7,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.bolsadeideas.springboot.backend.apirest.models.dao.IRoleDao;
+import com.bolsadeideas.springboot.backend.apirest.models.entity.Role;
 
 @Service
 public class RoleServImpl implements IRolService {
 	@Autowired
 	private IRoleDao rolDoa;
 	@Override
-	public List<String> rolesUnicos() {
-		List<String> roles = new ArrayList<>();
-		rolDoa.findRolesUnicos().iterator().forEachRemaining(roles :: add);
+	public List<Role> rolesUnicos() {
+		List<Role> roles = new ArrayList<>();
+		rolDoa.findRolesUnicos().iterator().forEachRemaining( roles :: add );
 		return roles;
 	}
 

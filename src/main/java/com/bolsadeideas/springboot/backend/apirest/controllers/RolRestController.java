@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.bolsadeideas.springboot.backend.apirest.models.entity.Role;
 import com.bolsadeideas.springboot.backend.apirest.models.services.IRolService;
 
 
@@ -22,7 +23,7 @@ public class RolRestController {
 	
 	@GetMapping(value = "/list")
 	@Secured("ROLE_ADMIN")
-	public List<String> rolesUnicos() {
+	public List<Role> rolesUnicos() {
 		return rolServi.rolesUnicos(); 
 	}
 }

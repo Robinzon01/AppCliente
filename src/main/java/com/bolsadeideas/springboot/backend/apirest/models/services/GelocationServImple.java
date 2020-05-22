@@ -17,5 +17,17 @@ public class GelocationServImple implements IGelocationService {
 		// TODO Auto-generated method stub
 		return geloDao.findByCiaAndUsuario(cia, user);
 	}
+
+	@Override
+	public Gelocation updateGelocation(Long id, Gelocation gelocation) {
+		Gelocation newGelo = geloDao.findById(id).orElse(null);
+		newGelo.setLatitud(gelocation.getLatitud());
+		newGelo.setLongitud(gelocation.getLongitud());
+		newGelo.setDireccion(gelocation.getDireccion());
+		newGelo.setUrbanizacion(gelocation.getUrbanizacion());
+		newGelo.setDni(gelocation.getDni());
+		newGelo.setCodEmp(gelocation.getCodEmp());
+		return geloDao.save(newGelo);
+	}
 	
 }
