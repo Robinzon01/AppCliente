@@ -1,25 +1,39 @@
 package com.bolsadeideas.springboot.backend.apirest.models.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
-@Table(name="roles")
+@Table(name="ROLES")
 public class Role implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Long id;
-	
-	@Column(name="authority")
+	//  AUTHORITY
 	private String authority;
 	
+	@JsonIgnoreProperties({"roles"})
+	@ManyToMany(mappedBy = "roles")
+	private List<Usuario> usuarios;
+	
+	public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -37,9 +51,5 @@ public class Role implements Serializable{
 	}
 
 
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 }

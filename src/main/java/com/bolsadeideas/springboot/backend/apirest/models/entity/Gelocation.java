@@ -57,6 +57,8 @@ public class Gelocation implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column(name = "F_CREACION")
 	private Date fInactivo;
+	
+	private String autorizacion;
 	/*
 	@Size(min=1, max=50, message="La longuitud del uCreacion de la tabla Gelocation es 50.")
 	@Column(name = "U_CREACION")
@@ -71,8 +73,17 @@ public class Gelocation implements Serializable {
 		fCreacion = new Date();
 	}
 	*/
+	
 	public Long getId() {
 		return id;
+	}
+
+	public String getAutorizacion() {
+		return autorizacion;
+	}
+
+	public void setAutorizacion(String autorizacion) {
+		this.autorizacion = autorizacion;
 	}
 
 	public void setId(Long id) {
