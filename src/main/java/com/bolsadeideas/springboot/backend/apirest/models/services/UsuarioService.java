@@ -60,15 +60,15 @@ public class UsuarioService implements IUsuarioService, UserDetailsService{
 	}
 
 	@Override
-	@Transactional(readOnly=true)
 	public Usuario createUsusario(Usuario usuario) {
+		
 		PasswordEncoder passwordEncoder = new BCryptPasswordEncoder(); 
 		Usuario objU = new Usuario();
 		objU.setEnabled(usuario.getEnabled());
 		objU.setPassword(passwordEncoder.encode(usuario.getPassword()));
 		objU.setRoles(usuario.getRoles());
 		objU.setUsername(usuario.getUsername());
-		
+		objU.setCia(usuario.getCia());
 		return usuarioDao.save(objU);
 	}
 
@@ -79,9 +79,8 @@ public class UsuarioService implements IUsuarioService, UserDetailsService{
 	}
 
 	@Override
-	public Page<Usuario> findAllPage(Pageable pageable) {
-		// TODO Auto-generated method stub
-		return null;
+	public Page<Usuario> findAllPage(Pageable pageable,String cia) {
+		return usuarioDao.findAllPage(pageable, cia);
 	}
 
 }

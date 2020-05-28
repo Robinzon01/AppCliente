@@ -21,7 +21,7 @@ public class Role implements Serializable{
 	private Long id;
 	//  AUTHORITY
 	private String authority;
-	
+	/* *****	
 	@JsonIgnoreProperties({"roles"})
 	@ManyToMany(mappedBy = "roles")
 	private List<Usuario> usuarios;
@@ -29,11 +29,11 @@ public class Role implements Serializable{
 	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}
-
+	
 	public void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios;
 	}
-
+	*/
 	public Long getId() {
 		return id;
 	}

@@ -12,5 +12,5 @@ public interface IUsuarioService {
 	Usuario createUsusario(Usuario usuario);
 	void deleteUsusario(Long codigo);
 	//PAGINACION
-	Page<Usuario> findAllPage(Pageable pageable);
+	Page<Usuario> findAllPage(Pageable pageable,String cia);
 }

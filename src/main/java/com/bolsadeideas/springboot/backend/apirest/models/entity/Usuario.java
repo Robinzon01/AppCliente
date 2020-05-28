@@ -1,6 +1,7 @@
 package com.bolsadeideas.springboot.backend.apirest.models.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -43,12 +44,12 @@ public class Usuario implements Serializable {
 	@Column(length = 3)
 	private String cia;
     
-	@JsonIgnoreProperties({"roles"})
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	// @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name="usuarios_roles", joinColumns= @JoinColumn(name="usuario_id"),
 	inverseJoinColumns=@JoinColumn(name="role_id"),
 	uniqueConstraints= {@UniqueConstraint(columnNames= {"usuario_id", "role_id"})})
-	private List<Role> roles;
+	private List<Role> roles = new ArrayList<>();
     
 	public String getCia() {
 		return cia;
