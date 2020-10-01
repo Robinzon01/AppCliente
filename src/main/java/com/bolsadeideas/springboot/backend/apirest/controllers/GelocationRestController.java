@@ -34,7 +34,8 @@ public class GelocationRestController {
 	private IGelocationService geloService;
 	
 	@PutMapping("/update/{id}")
-	public ResponseEntity<?> update(@Valid @RequestBody Gelocation gelocation, BindingResult result, @PathVariable Long id) {
+	public ResponseEntity<?> update(@Valid @RequestBody Gelocation gelocation, BindingResult result,
+			@PathVariable Long id) {
 		Gelocation newGelo = null;
 		Map<String, Object> response = new HashMap<>();
 
@@ -62,7 +63,7 @@ public class GelocationRestController {
 		}
 
 		response.put("mensaje", "La geolocalización ha sido actualizado con éxito!");
-		response.put("cliente", newGelo);
+		response.put("gelocalizacion", newGelo);
 
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}

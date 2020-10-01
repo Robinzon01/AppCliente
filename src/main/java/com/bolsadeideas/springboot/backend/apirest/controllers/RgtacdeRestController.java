@@ -63,7 +63,7 @@ public class RgtacdeRestController {
 			response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
-		
+		  
 		response.put("mensaje", "La asistencia ha sido creado con éxito!");
 		response.put("rgtacde", rgtacdeNew);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);

@@ -13,7 +13,6 @@ import org.springframework.stereotype.Service;
 import com.bolsadeideas.springboot.backend.apirest.models.dao.IAstenciDao;
 import com.bolsadeideas.springboot.backend.apirest.models.entity.Astenci;
 
-
 @Service
 public class AstenciServiceImpl implements IAstenciService {
 	

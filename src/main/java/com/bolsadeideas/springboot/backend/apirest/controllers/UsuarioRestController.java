@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bolsadeideas.springboot.backend.apirest.models.entity.Rgtacde;
+//import com.bolsadeideas.springboot.backend.apirest.models.entity.Rgtacde;
 import com.bolsadeideas.springboot.backend.apirest.models.entity.Usuario;
 import com.bolsadeideas.springboot.backend.apirest.models.services.IUsuarioService;
 
@@ -44,7 +44,7 @@ public class UsuarioRestController {
   		Pageable pageable = PageRequest.of(page, 5);
   		return userService.findAllPage(pageable, cia);
   	}
-	
+	 
 	//METODO POST
 	@PostMapping("/save")
 	@Secured("ROLE_ADMIN")
