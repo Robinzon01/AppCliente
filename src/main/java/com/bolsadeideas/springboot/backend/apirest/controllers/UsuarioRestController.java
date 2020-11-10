@@ -76,4 +76,5 @@ public class UsuarioRestController {
 		response.put("usuario", usuarioNew);
 		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
 	}
+	
 }

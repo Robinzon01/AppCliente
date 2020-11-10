@@ -5,6 +5,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -21,6 +23,7 @@ public class Astenci implements Serializable {
 
 	@Id
 	@Column(name = "cod_as")
+	@GeneratedValue(strategy= GenerationType.SEQUENCE)
 	private Long id;
 	
 	@Size(min=1, max=50, message="La longuitud del nombre de la tabla ASTENCI es 50.")
